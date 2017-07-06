@@ -1,0 +1,73 @@
+﻿Да се напише функциjа за сортирање на низа од цели броеви. Потоа да се напише функциjа за споjување на две низи од цели броеви сортирани во растечки 
+редослед. Оваа функциjа треба во нова низа да ги смести веќе сортираните две низи во нова низа коjа ќе биде исто така сортирана во растечки редослед. 
+Во оваа функциjа не смее да се повикува функиjата за сортирање.
+
+#include <stdio.h>
+#define MAX 400
+
+
+void sort(int *a, int n) {
+ 	// vasiot kod ovde
+    int i,j,pom;
+    for(i=0;i<n;i++)
+        for(j=0;j<n-i-1;j++)
+        {
+            if(a[j]>a[j+1])
+               {
+                   pom=a[j];
+                       a[j]=a[j+1];
+                   a[j+1]=pom;
+               }
+               
+        }
+}
+
+void merge(int *a, int *b, int *c, int n) {
+    // vasiot kod ovde
+    int k,m,pom;
+    for(k=0;k < n;k++)
+    {
+    c[k]=a[k];
+    c[n+k]=b[k];
+        
+    }
+    for(k=0;k < n;k++)
+    for(m=0;m < 2*n-k-1;m++)
+    {
+        if( c[m] > c[m+1])
+           {
+               pom=c[m];
+               c[m]=c[m+1];
+                   c[m+1]=pom;
+           }
+    }
+           
+}
+
+int main() {
+    int n;
+    int a[MAX];
+    int b[MAX];
+    int c[MAX];
+    scanf("%d", &n);
+    int i;
+    for(i = 0; i < n; ++i) {
+        scanf("%d", &a[i]);
+    }
+    for(i = 0; i < n; ++i) {
+        scanf("%d", &b[i]);
+    }
+    sort(a, n);
+    sort(b, n);
+    merge(a, b, c, n);
+    for(i = 0; i < 2 * n; ++i) {
+        printf("%d ", c[i]);
+    }
+    return 0;
+}
+Пример влез
+3
+8 5 12
+7 1 4
+Пример излез
+1 4 5 7 8 12 

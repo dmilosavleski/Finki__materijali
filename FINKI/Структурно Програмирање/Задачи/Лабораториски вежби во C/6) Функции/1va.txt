@@ -1,0 +1,43 @@
+﻿Да се напише функција која за дадена низа А од N (N < 100) природни броеви (низата и бројот N се вчитуваат од СВ) ќе ги сортира нејзините елементи во 
+растечки редослед и ќе го врати како резултат најмалиот елемент во низата.
+#include <stdio.h>
+#define MAX 100
+
+int sortMin(int *a, int n) {
+    // vasiot kod ovde
+    int i,j,pom;
+    for(i=(n-1);i>=0;i--)
+        for(j=1;j<=i;j++)
+        {
+            if(a[j-1]>a[j])
+            {
+                pom=a[j];
+                a[j]=a[j-1];
+                a[j-1]=pom;
+            }
+        }
+    return *a;
+    
+}
+
+int main() {
+    int a[MAX];
+    int n;
+    scanf("%d", &n);
+    int i;
+    for(i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+    int min = sortMin(a,n);
+    for(i = 0; i < n; i++) {
+        printf("%d ", a[i]);
+    }
+    printf("\n%d", min);
+    return 0;
+}
+Пример влез
+10
+12 43 56 23 44 9 65 18 74 7
+Пример излез
+7 9 12 18 23 43 44 56 65 74 
+7

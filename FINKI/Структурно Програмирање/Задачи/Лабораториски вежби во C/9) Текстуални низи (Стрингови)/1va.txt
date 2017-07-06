@@ -1,0 +1,49 @@
+﻿Да се напише функциjа коjа за влезниот аргумент низа од знаци ке провери дали е полу-палиндром. Полу-палиндром е збор коj со промена на само една буква
+станува палиндром (збор коj се чита исто од лево на десно и од десно на лево). Задачата да се реши со помош на покажувачи.
+
+#include <stdio.h>
+#include <string.h>
+#include <malloc.h>
+#define MAX 100
+
+int polupalindrom(char *word) {
+    // vasiot kod ovde
+    int b,i,j,k,flag=0;
+    b=strlen(word);
+    char *svr=(char *)malloc(b);
+    strcpy(svr,word);
+    for(i=0,j=b-1;j>0,i<b;j--,i++)
+    {
+        svr[i]=word[j];
+    }
+    for(i=0;i<b/2;i++)
+    {
+        if(word[i]!=svr[i])
+        {
+            flag++;
+        }
+    }
+    if(flag==1)
+    {
+        return 1;
+    }
+    if(flag==0||flag>1)
+    {
+        return 0;
+    }
+    free(svr);
+}
+    
+    
+
+
+int main() {
+    char word[MAX];
+    scanf("%s", word);
+    printf("%d", polupalindrom(word));
+    return 0;
+}
+Пример влез
+palindrom
+Пример излез
+0

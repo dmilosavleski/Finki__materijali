@@ -1,0 +1,46 @@
+﻿Да се напише функција float f(float x)која ја пресметува функцијата:
+
+[f(x) = \sum_{k = 0}^{10}\frac{(2x^2)^{k+1}}{(k+1)!}]
+
+Пресметувањето на степен на број и факториел да се реализира со посебни функции.
+
+#include<stdio.h>
+int faktoriel(int k)
+{
+    int a,fakt_min=1;
+    for(a=1;a<=k;a++)
+        fakt_min*=a;
+    return fakt_min;
+}
+float stepen(float i, int j)
+{
+    int k;
+    double vrednost;
+    if (i==0)
+        vrednost=0.0;
+    else
+    {
+        vrednost=1.0;
+        for(k=1;k<=j;++k)
+            vrednost*=i;
+    }
+    return vrednost;
+}
+int main()
+{
+    int i;
+    float a,b,c,d;
+    scanf("%f",&d);
+    for(i=0;i<=10;i++)
+    {
+        a=stepen((2*d*d),(i+1));
+	b=faktoriel(i+1);        
+	c+=a/b;
+        
+    }
+    printf("%f",c);
+}
+Пример влез
+3
+Пример излез
+3603905.500000

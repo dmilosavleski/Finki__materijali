@@ -1,0 +1,56 @@
+#include<stdio.h>
+
+int main()
+{
+  int n,m,sumpomal=0,sumpogolem=0;
+  scanf("%d %d",&n,&m);
+  if(n<=0||m<=0)
+  {
+      printf("Invalid input");
+  }
+  else
+  {
+      if(n>m)
+      {
+          while(n)
+          {
+              sumpogolem+=n%10;
+              n/=100;
+          }
+          while(m)
+          {
+              sumpomal+=m%10;
+              m/=10;
+          }
+          if(sumpomal==sumpogolem)
+          {
+              printf("ista suma");
+          }
+          else
+          {
+              printf("NE");
+          }
+      }
+      else
+      {
+          while(m)
+          {
+              sumpogolem+=m%10;
+              m/=100;
+          }
+          while(n)
+          {
+              sumpomal+=n%10;
+              n/=10;
+          }
+          if(sumpomal==sumpogolem)
+          {
+              printf("ista suma");
+          }
+          else
+          {
+              printf("NE");
+          }
+      }
+  }
+}

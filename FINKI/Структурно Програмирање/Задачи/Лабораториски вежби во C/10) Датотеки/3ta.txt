@@ -1,0 +1,77 @@
+﻿Да се направи програма која од влезната датотека „text.txt“ ќе ги одреди и отпечати сите зборови палиндроми во излезната датотека „print.txt“. 
+Да се избегнуваат интерпукциските знаци точка (.) и запирка (,) и да не се прави разлика меѓу големи и мали букви.
+
+Забелешка: Да не се менуваат дадените функции writeToFile() printFile(). Тие служат за креирање и проверка на потребните датотеки.
+#include <stdio.h>
+
+void writeToFile() {
+    FILE *f = fopen("text.txt", "w");
+    char c;
+    while((c = getchar()) != '#') {
+        fputc(c, f);
+    }
+    fclose(f);
+}
+
+void printFile() {
+    FILE *f=fopen("print.txt","r");
+    char line[100];
+    while(!feof(f)){
+        fgets(line,100,f);
+        if (feof(f))
+            break;
+        printf("%s",line);
+    }
+    fclose(f);
+}
+
+int palindrom (char niza[]){
+int a= strlen(niza),i,j=a;
+if(!isalpha(niza[a-1])){
+a-=1;
+}
+
+for(i=0;i<a/2;i++){
+if(tolower(niza[i])!=tolower(niza[a-i-1])){
+return 0;
+}
+
+}
+return 1;
+
+}
+int main() {
+writeToFile();
+FILE *f1;
+char c;
+int i,j,k,flag,vozbor;
+char niza[100];
+if((f1=fopen("text.txt","r"))==NULL){
+printf ("Datotekata nemoze da se otvori");
+return -1;
+}
+
+while(!feof(f1)){
+fscanf(f1,"%s",niza);
+if(palindrom(niza))
+if(!isalpha(niza[strlen(niza)-1])) printf("%.*s\n", (int)strlen(niza)-1, niza);
+else printf("%s\n",niza);
+    
+}
+
+
+fclose(f1);
+
+
+
+return 0;
+}
+    
+    
+ Пример влез
+Ana vozi kajak, a Ema trotinet. I potoa im se prikluci Marko.#
+Пример излез
+Ana
+kajak
+a
+I

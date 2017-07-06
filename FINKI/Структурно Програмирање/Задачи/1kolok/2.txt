@@ -1,0 +1,37 @@
+#include<stdio.h>
+
+int main()
+{
+    int n,temp1,temp2,najgolem,najmal;
+    int max=0,min=10000000000,max1=0,min1=0;
+    while(scanf("%d",&n))
+    {
+        temp1=n;
+        temp2=n;
+        temp1/=10;
+        while(temp1)
+        {
+            min1+=temp1%10;
+            temp1/=100;
+        }
+        while(temp2)
+        {
+            max1+=temp2%10;
+            temp2/=100;
+        }
+        if(max1>max)
+        {
+            max=max1;
+            najgolem=n;
+        }
+        if(min1<min)
+        {
+            min=min1;
+            najmal=n;
+        }
+        min1=0;
+        max1=0;
+    }
+    printf("Najmal->%d i Najgolem->%d",najmal,najgolem);
+    return 0;
+}

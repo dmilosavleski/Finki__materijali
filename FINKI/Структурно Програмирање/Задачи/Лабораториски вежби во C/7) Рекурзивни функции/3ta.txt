@@ -1,0 +1,52 @@
+﻿Да се напише програма во која е имплементирана рекурзивна функција која проверува дали меѓу кои било две цифри што се наоѓаат на иста позиција броејќи 
+од лево (за едната), односно броејќи од десно (за другата) нема поголема цифра од нив. Бројот на цифри треба да биде непарен и не помал од 3. 
+Функцијата како влезен аргумент го прима бројот на цифри.
+#include<stdio.h>
+#include<math.h>
+
+int greshka=1;
+int funkcija(int n,int cifri)
+{
+    if(cifri==1)
+    {
+        return n;       
+    }
+    else
+    {
+        
+        int milionche=pow(10,cifri-1);
+        int prva = n/milionche;
+        int posledna =n%10;
+   		int tmp= funkcija((n%milionche)/10,cifri-2);
+        if((prva)>=tmp )
+            if(posledna>= tmp)
+            	return max(prva, posledna, tmp);
+        
+       greshka =0;
+       return 0;
+    }
+}
+
+int max(int i, int j, int k){
+	if((i>=j)&&(i>=k))
+        return i;
+    if((i<=j)&&(k<=j))
+        return j;
+    if((k>=i)&&(k>=j))
+        return k;
+    
+}
+int main()
+{
+    int n,cifri;
+    scanf("%d %d",&n,&cifri);
+    funkcija(n,cifri);
+    printf("%d",greshka);
+    return 0;
+}
+
+Пример влез
+7591468
+7
+Пример излез
+0

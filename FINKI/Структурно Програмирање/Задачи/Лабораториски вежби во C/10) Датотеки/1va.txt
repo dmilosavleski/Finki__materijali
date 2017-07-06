@@ -1,0 +1,45 @@
+﻿Да се напише програма која од датотеката со име "text.txt" ќе ги одреди и отпечати на стандарден излез односот на цифри и букви.
+
+Забелешка: Да не се менува функцијата writeToFile(). Таа служи за креирање и пополнување на влезната датотека со податоците дадени на стандардниот влез.
+
+#include <stdio.h>
+
+void writeToFile() {
+    FILE *f = fopen("text.txt", "w");
+    char c;
+    while((c = getchar()) != '#') {
+        fputc(c, f);
+    }
+    fclose(f);
+}
+
+int main() {
+    writeToFile();
+    FILE *f1,*f;
+    float br_alpha=0,br_num=0;
+    char c;
+    if((f1=fopen("text.txt","r"))==NULL)
+    {
+        printf("Datotekata nemoze da se otvori");
+        return -1;
+    }
+    while(((c=fgetc(f1)))!=EOF)
+    {
+        if(isalpha(c))
+        {
+            br_alpha++;
+        }
+        if(isdigit(c))
+        {
+            br_num++;
+        }
+    }
+    printf("%.2f",br_num/br_alpha);
+    
+    // vasiot kod ovde
+}
+
+Пример влез
+t is preferable to avoid 4134sav54543253ing empty li432432434nes on the history list, since users rarely have a burning need to reuse a blan7777k line. Here is a 23 function which 3 usefully repla98343242ces the 42134 4354678789876978standard gets() library function, and has the advantage of no static buffer to overflow#
+Пример излез
+0.27

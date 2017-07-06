@@ -1,0 +1,41 @@
+﻿Да се напише функциjа коjа ќе враќа како резултат колку пати некоj даден стринг се наоѓа во некоj друг стринг.
+
+#include <stdio.h>
+#include <string.h>
+#define MAX 100
+
+int stringMatch(char *str, char *match) {
+    // vasiot kod ovde
+    int b=0,a=0,c=0,brojac=0,i,j;
+    b=strlen(match);
+    a=strlen(str);
+    for(i=0;i<a;i++)
+    {
+        for(j=0;j<b;j++)
+        {
+            if(str[i+j]!=match[j])
+            {
+                break;
+            }
+        }
+        if(j==b)
+        {
+            brojac++;
+        }
+    }
+    return brojac;
+    
+}
+
+int main() {
+    char str[MAX], match[MAX];
+    gets(str);
+    gets(match);
+    printf("%d", stringMatch(str, match));
+    return 0;
+}
+Пример влез
+some of the best of the examples
+of
+Пример излез
+2

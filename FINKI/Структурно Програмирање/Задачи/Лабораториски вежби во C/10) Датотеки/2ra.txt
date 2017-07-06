@@ -1,0 +1,79 @@
+﻿Да се напише програма која ќе ги прочита елементите на една матрица сместени во текстуална датотека „matrica.txt“. Во првиот ред на датотеката се 
+запишани бројот на редици и колони на матрицата, а потоа се запишани елементите на матрицата. Потребно е за секоја редица да го пресметате збирот на 
+елементите и во текстуалната датотека „izlez.txt“ да се испечатат само оние збирови по редици коишто се поголеми од 10.
+
+Забелешка: Да не се менуваат дадените функции writeToFile() printFile(). Тие служат за креирање и проверка на потребните датотеки.
+
+#include <stdio.h>
+
+void writeToFile() {
+    FILE *f = fopen("matrica.txt", "w");
+    char c;
+    while((c = getchar()) != '#') {
+        fputc(c, f);
+    }
+    fclose(f);
+}
+
+void printFile() {
+
+    FILE *f=fopen("izlez.txt","r");
+    char line[100];
+    while(!feof(f)){
+        fgets(line,100,f);
+        if (feof(f))
+            break;
+        printf("%s",line);
+    }
+    fclose(f);
+}
+
+int main() {
+writeToFile();
+
+FILE *f1,*f;
+char c;
+int m,n,a[100][100],i,j,suma=0;
+
+if((f1=fopen("matrica.txt","r"))==NULL){
+printf ("Datotekata nemoze da se otvori");
+return -1;
+}
+
+fscanf (f1,"%d %d",&m,&n); 
+
+for(i=0;i<m&&!feof(f1);i++){
+for(j=0;j<n&&!feof(f1);j++){
+fscanf (f1,"%d",&a[i][j]);
+}
+}
+fclose (f1);
+f=fopen("izlez.txt","w");
+for(i=0;i<m;i++){
+for(j=0;j<n;j++){
+suma=suma+a[i][j];
+}
+if(suma>10){
+printf("%d\n",suma);
+}
+suma=0;
+}
+
+fclose(f);
+printFile(); 
+return 0;
+}
+
+Пример влез
+5 5
+8 2 8 0 7
+1 3 -1 3 8
+2 3 5 8 1
+7 0 -1 1 0
+0 8 0 1 2
+#
+Пример излез
+25
+14
+19
+11

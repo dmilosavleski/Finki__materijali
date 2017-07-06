@@ -1,0 +1,20 @@
+﻿Да се напише програма која го печати на СИ најголемиот заеднички делител (НЗД) на два броја кои се читаат од СВ
+
+#include <stdio.h>
+int nzd(int a, int b)
+{
+    if(a==b) return a;
+    if(a>b) return nzd(a-b,b);
+    return nzd(a,b-a);
+}
+int main()
+{
+    int c,d;
+    scanf("%d %d",&c,&d);
+    printf("%d",nzd(c,d));
+}
+
+Пример влез
+67 13
+Пример излез
+1

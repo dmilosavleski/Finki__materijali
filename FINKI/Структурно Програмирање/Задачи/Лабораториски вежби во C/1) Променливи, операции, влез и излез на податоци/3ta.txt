@@ -1,0 +1,22 @@
+﻿Да се напише програма коjа за даден цел броj секунди коj се чита од стандарден влез, 
+ке ги отпечати на екран соодветните вредности во часови, минути и секунди.
+#include <stdio.h>
+
+int main()
+{
+  	int sec, min,h , ost;
+  	scanf("%d",&sec);
+  
+  	h = sec / 3600;
+    int m = sec % 3600;
+    min = m / 60;
+    ost = sec % 60;
+  	printf("%d sekundi se %d casovi, %d minuti i %d sekundi\n" ,  sec, h, min, ost);
+   return 0;
+
+}
+
+Пример влез
+6454
+Пример излез
+6454 sekundi se 1 casovi, 47 minuti i 34 sekundi
